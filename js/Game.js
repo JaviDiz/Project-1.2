@@ -5,6 +5,6 @@ class Game{
         this.developer=gDeveloper;
         this.release=gRelease;
         this.pegi=gPegi;
-        this.gGenre=gGenre;
+        this.genre=gGenre;
     }
 }
