@@ -18,3 +18,22 @@
     })
   }, false)
 }())
+
+
+// Validación
+export default function validateGameForm() {
+  const elements = document.getElementById("frm-game").elements;
+
+  for (let e of elements) {
+      if ((e.type === "text" || e.type === "date" || e.type === "number") &&
+           e.value === "") {
+               alert ("Rellena campos")
+               return false;
+      }
+  }
+  let pegi = Number.parseInt(document.querySelector("#game_pegi").value, 10);
+  if (!Number.isInteger(pegi) || pegi > 18) {
+      return false;
+  }
+  return true;
+}

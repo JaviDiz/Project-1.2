@@ -8,3 +8,5 @@ class Game{
         this.genre=gGenre;
     }
 }
+
+export default Game;
