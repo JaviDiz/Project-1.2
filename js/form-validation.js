@@ -35,5 +35,8 @@ export default function validateGameForm() {
   if (!Number.isInteger(pegi) || pegi > 18) {
       return false;
   }
+  if (!Number.isInteger(pegi) || pegi != 3 && pegi != 7 && pegi != 12 && pegi != 16 && pegi != 18){
+    return false;
+  } 
   return true;
 }

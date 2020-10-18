@@ -27,8 +27,8 @@ function addGame() {
             document.querySelector("#game_name").value,
             document.querySelector("#game_developer").value,
             release,
-            document.querySelector("#game_gnre").value,
             document.querySelector("#game_pegi").value,
+            document.querySelector("#game_gnre").value,
         );
         console.info("New game:" + oGame.toString());
 
