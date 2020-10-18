@@ -1,12 +1,13 @@
-
 import Game from "./Game.js"
 import validateGameForm from "./form-validation.js"
 
 let lGames = [];
 let indexGame = 0;
+let sort = true;
 
 document.querySelector('#btn-addGame').addEventListener("click", addGame);
 
+orderNames();
 
 
 // Añadir juego
@@ -50,16 +51,43 @@ function populateTableGames(lGames) {
                         <td>${oGame.release}</td>
                         <td>${oGame.pegi}</td>
                         <td>${oGame.genre}</td>
-                        <td><i class="fas fa-trash-alt" onclick="setDeleteEvent(${oGame.ID})" style="color:red"></i></td>
+                        <td><i class="fas fa-trash-alt delete" id="${oGame.ID}" style="color:red"></i></td>
                         </tr>`;
         bodyGameList.innerHTML += sGame;
     });
+    setDeleteEvent();
 }
 
+function setDeleteEvent() {
+    $("i.delete").on('click',(event) => {
+        lGames = lGames.filter(game => game.ID != event.target.id);
+        populateTableGames(lGames);
+    });
 
-function setDeleteEvent(id) {
-		let bodyGameList = document.getElementById(id);
-        bodyGameList.innerHTML = "";
+    
 };
 
+function orderNames() {
 
+    $("#orderButton").on('click', () => {
+    
+        if (sort) {
+            sort = false;
+            lGames.sort(function(a, b){
+                if(a.name < b.name) { return -1; }
+                if(a.name > b.name) { return 1; }
+                return 0;
+            })
+        } else {
+            sort = true;
+            lGames.sort(function(a, b){
+                if(a.name > b.name) { return -1; }
+                if(a.name < b.name) { return 1; }
+                return 0;
+            })
+        }
+    
+        populateTableGames(lGames);
+    });
+        
+}
