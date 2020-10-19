@@ -36,6 +36,7 @@ export default function validateGameForm() {
       return false;
   }
   if (!Number.isInteger(pegi) || pegi != 3 && pegi != 7 && pegi != 12 && pegi != 16 && pegi != 18){
+    alert("Los valores permitidos en pegi son 3,7,12,16 y 18");
     return false;
   } 
   return true;
